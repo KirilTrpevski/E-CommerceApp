@@ -1,0 +1,25 @@
+.signUp-wrapper {
+  margin: 6rem auto;
+  width: 20rem;
+  .card-body {
+    form {
+      display: flex;
+      flex-direction: column;
+      small {
+        text-align: center;
+        font-size: 12px;
+        a {
+          color: #0d6efd;
+        }
+      }
+    }
+  }
+}
+
+input {
+  margin-bottom: 1rem;
+}
+
+button {
+  margin-bottom: 2rem;
+}

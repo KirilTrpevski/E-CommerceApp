@@ -1,0 +1,36 @@
+<div class="container my-5">
+  <div class="row">
+    <!-- Product Image Gallery Section -->
+    <div class="col-md-6">
+      <div class="main-image-wrapper">
+        <img
+          [src]="'data:image/jpeg;base64,' + product?.image"
+          alt="product image"
+          class="img-fluid main-product-image"
+        />
+      </div>
+    </div>
+
+    <!-- Product Details Section -->
+    <div class="col-md-6">
+      <h2 class="product-title">{{ product?.name }}</h2>
+      <p class="product-price text-danger">${{ product?.price }}</p>
+
+      <!-- Product Description -->
+      <p class="product-description">
+        {{ product?.description }}
+      </p>
+
+      <!-- Add to Cart Section -->
+      <div class="add-to-cart-section mt-4">
+        <button class="btn btn-primary mt-3" (click)="addToCart()">Add to Cart</button>
+      </div>
+
+      <!-- Additional Info (Optional) -->
+      <ul class="list-unstyled mt-4">
+        <li><strong>Category:</strong> {{ product?.category }}</li>
+        <li><strong>SKU:</strong> sds212</li>
+      </ul>
+    </div>
+  </div>
+</div>

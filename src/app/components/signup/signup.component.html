@@ -1,0 +1,55 @@
+<div class="signUp-wrapper">
+  <div class="card">
+    <div class="card-body">
+      <form class="form-signip" [formGroup]="signUpForm">
+        <h3 class="h4 text-center mb-3 font-weight-normal">Sign Up</h3>
+
+        <label for="username" class="sr-only">Username </label>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          name="username"
+          placeholder="Username"
+          formControlName="username"
+        />
+
+        <label for="email" class="sr-only">Email </label>
+        <input type="text" id="email" class="form-control" name="email" placeholder="Email" formControlName="email" />
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input
+          type="password"
+          id="inputPassword"
+          class="form-control"
+          name="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+
+        <label for="confirmPassword" class="sr-only">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          class="form-control"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          formControlName="confirmPassword"
+        />
+
+        <button class="btn btn-sm btn-primary btn-block align-items-center" type="submit" (click)="submit()">
+          Sign up
+        </button>
+
+        <small class="text-sm">Already have an account? <a [routerLink]="['/login']">Log in</a></small>
+
+        <!-- <div class="alert alert-danger" role="alert" *ngIf="isFormValid">
+            Please fill all fields.
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="areCredentialsInvalid">
+            Invalid user or password.
+          </div> -->
+      </form>
+    </div>
+  </div>
+</div>

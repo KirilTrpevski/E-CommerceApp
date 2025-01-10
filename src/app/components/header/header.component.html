@@ -1,0 +1,82 @@
+<!-- <div class="tf-top-bar bg_white line"> -->
+<!-- <div class="px_15 lg-px_40">
+        <div class="tf-top-bar_wrap grid-3 gap-30 align-items-center">
+            <ul class="tf-top-bar_item tf-social-icon d-flex gap-10">
+                <li><a href="#" class="box-icon w_28 round social-facebook bg_line"><i class="icon fs-12 icon-fb"></i></a></li>
+                <li><a href="#" class="box-icon w_28 round social-twiter bg_line"><i class="icon fs-10 icon-Icon-x"></i></a></li>
+                <li><a href="#" class="box-icon w_28 round social-instagram bg_line"><i class="icon fs-12 icon-instagram"></i></a></li>
+                <li><a href="#" class="box-icon w_28 round social-tiktok bg_line"><i class="icon fs-12 icon-tiktok"></i></a></li>
+                <li><a href="#" class="box-icon w_28 round social-pinterest bg_line"><i class="icon fs-12 icon-pinterest-1"></i></a></li>
+            </ul>
+          </div>
+        </div> -->
+
+<!-- </div> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <!-- Company Name on the Left -->
+    <a class="navbar-brand" routerLink="/">My E-commerce Store</a>
+
+    <!-- Toggle button for mobile view -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links in the Middle -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about-us">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact">Contact Us</a>
+        </li>
+      </ul>
+
+      <!-- Cart Icon/Text on the Right -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart"> <i class="bi bi-cart3"></i> Cart </a>
+        </li>
+      </ul>
+      <div class="btn-group">
+        <button
+          type="button"
+          class="btn btn-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Right-aligned menu
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <button class="dropdown-item" type="button">Action</button>
+          <button class="dropdown-item" type="button">Another action</button>
+          <button class="dropdown-item" type="button">Something else here</button>
+        </div>
+      </div>
+      <div class="account-icon-wrapper" *ngIf="getToken()">
+        <!-- <button type="button" class="btn btn-light">
+          <i class="bi bi-person-circle h4 text-muted icon"></i>
+        </button> -->
+
+        <!-- <i class="bi bi-0-circle-fill"></i> -->
+      </div>
+    </div>
+  </div>
+</nav>
