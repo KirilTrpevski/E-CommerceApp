@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
+import { SignUpUser } from '../../models/sign-up.model';
 
 @Component({
   selector: 'app-signup',
@@ -21,19 +22,22 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
     this.signUpForm = this.fb.group({
       username: ['', [Validators.required, Validators.required]], // Username with validators
-      email: ['', [Validators.required, Validators.email]], // Username with validators
+      email: ['', [Validators.required, Validators.email]],
+      // isAdmin: [''],
       password: ['', [Validators.required]], // Password with validators
       confirmPassword: ['', [Validators.required]], // Password with validators
     });
   }
 
   submit() {
-    const payload = {
-      username: this.signUpForm.get('username')?.value,
+    const signUpUser: SignUpUser = {
+      userName: this.signUpForm.get('username')?.value,
       email: this.signUpForm.get('email')?.value,
       password: this.signUpForm.get('password')?.value,
+      // isAdmin: this.signUpForm.get('isAdmin')?.value,
+      isAdmin: true,
     };
-    this.authService.signUp(payload).subscribe({
+    this.authService.signUp(signUpUser).subscribe({
       next: () => {
         console.log('success');
         this.router.navigate(['/login']);

@@ -40,11 +40,17 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/products">Products</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" routerLink="/about-us">About Us</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/contact">Contact Us</a>
+        </li> -->
+        <li class="nav-item" *ngIf="isAdmin()">
+          <a class="nav-link" routerLink="/manage-products">Manage products</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin()">
+          <a class="nav-link" routerLink="/users">Users</a>
         </li>
       </ul>
 
@@ -54,28 +60,18 @@
           <a class="nav-link" routerLink="/cart"> <i class="bi bi-cart3"></i> Cart </a>
         </li>
       </ul>
-      <div class="btn-group">
-        <button
-          type="button"
-          class="btn btn-secondary dropdown-toggle"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Right-aligned menu
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-          <button class="dropdown-item" type="button">Action</button>
-          <button class="dropdown-item" type="button">Another action</button>
-          <button class="dropdown-item" type="button">Something else here</button>
+      <div class="account-icon-wrapper">
+        <div *ngIf="getToken(); else login">
+          <button mat-button [matMenuTriggerFor]="menu"><i class="bi bi-person-circle h3 text-muted"></i></button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="onLogout()">Logout</button>
+          </mat-menu>
         </div>
-      </div>
-      <div class="account-icon-wrapper" *ngIf="getToken()">
-        <!-- <button type="button" class="btn btn-light">
-          <i class="bi bi-person-circle h4 text-muted icon"></i>
-        </button> -->
-
-        <!-- <i class="bi bi-0-circle-fill"></i> -->
+        <ng-template #login
+          ><li class="nav-item">
+            <a class="nav-link text-muted" routerLink="/login"> Login </a>
+          </li></ng-template
+        >
       </div>
     </div>
   </div>

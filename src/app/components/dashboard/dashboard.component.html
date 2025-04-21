@@ -1,1 +1,24 @@
-<h2>Dashboard</h2>
+<ngb-carousel
+  #carousel
+  [interval]="3000"
+  [pauseOnHover]="pauseOnHover"
+  [pauseOnFocus]="pauseOnFocus"
+  (slide)="onSlide($event)"
+>
+  @for (img of images; track img; let i = $index) {
+    <ng-template ngbSlide>
+      <div style="z-index: 1000; color: antiquewhite" class="carousel-caption">
+        <h5 style="color: white">{{ img.description }}</h5>
+        @if (img.subDescription) {
+          <p style="color: white">{{ img.subDescription }}</p>
+        }
+      </div>
+      <a target="_blank" rel="nofollow noopener noreferrer">
+        <div class="picsum-img-wrapper">
+          <img style="width: 2000px" [src]="img.image" />
+        </div>
+      </a>
+    </ng-template>
+  }
+</ngb-carousel>
+<app-product-list [showHeader]="false"></app-product-list>

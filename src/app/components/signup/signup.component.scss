@@ -12,11 +12,21 @@
           color: #0d6efd;
         }
       }
+      .checkbox-group {
+        display: flex;
+        margin-bottom: 1rem;
+        .checkbox-group {
+          margin-top: 0 !important;
+        }
+        label {
+          margin-right: 6px;
+        }
+      }
     }
   }
 }
 
-input {
+.form-control {
   margin-bottom: 1rem;
 }
 

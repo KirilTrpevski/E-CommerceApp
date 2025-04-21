@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { LoginUser } from '../../models/login.model';
 
 @Component({
   selector: 'app-login',
@@ -16,16 +17,15 @@ export class LoginComponent implements OnInit {
   areCredentialsInvalid = false;
 
   constructor(
-    private fb: FormBuilder, // FormBuilder to create the form
-    private authService: AuthService, // Service to handle authentication
+    private fb: FormBuilder,
+    private authService: AuthService,
     private router: Router,
   ) {}
 
   ngOnInit(): void {
-    // Initialize the reactive form with validators
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]], // Username with validators
-      password: ['', [Validators.required]], // Password with validators
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
     });
   }
 
@@ -33,27 +33,22 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm);
   }
 
-  // private checkCredentials(signInForm: NgForm) {
-  //   const signInData = new SignInData(signInForm.value.login, signInForm.value.password);
-  //   if (!this.authenticationService.authenticate(signInData)) {
-  //     this.isFormValid = false;
-  //     this.areCredentialsInvalid = true;
-  //   }
-  // }
-
   onLogin(): void {
-    // if (this.loginForm.invalid) {
-    //   return;
-    // }
-    console.log();
-
     const formData = this.loginForm.value;
-    console.log(formData);
-    this.authService.login(formData.username, formData.password).subscribe(
+    const loginUser: LoginUser = {
+      userName: formData.username,
+      password: formData.password,
+    };
+    this.authService.login(loginUser).subscribe(
       (response) => {
-        console.log('Login successful', response);
         this.authService.setToken(response.token);
-        this.router.navigate(['/products']);
+        this.authService.setUserId(response.userId);
+        if (this.authService.isAdmin()) {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/products']);
+        }
+
         // Redirect to dashboard or another page upon success
       },
       (error) => {
