@@ -122,7 +122,9 @@ export class ProductDetailComponent {
 
   private trackProductInteraction(productId: string): void {
     const userId = this.authService.getUserId();
-    this.productService.trackProductInteraction(userId!, productId, 'Purchase').subscribe();
+    if (userId) {
+      this.productService.trackProductInteraction(userId!, productId, 'Purchase').subscribe();
+    }
   }
 
   private getRecommendations(): void {

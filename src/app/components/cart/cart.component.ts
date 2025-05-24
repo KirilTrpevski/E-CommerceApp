@@ -42,4 +42,9 @@ export class CartComponent {
     this.cartService.removeItem(item);
     this.cartItems = this.cartService.getCartItems();
   }
+
+  onCheckoutClick(): void {
+    alert('Product paid. Enjoy');
+    this.cartService.clearCart();
+  }
 }

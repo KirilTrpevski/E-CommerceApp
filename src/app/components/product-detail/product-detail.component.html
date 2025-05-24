@@ -34,41 +34,43 @@
     </div>
   </div>
   <div class="row mt-5 pb-5">
-    <h5>Recommended For You</h5>
-    <p-carousel
-      [value]="recommendedProducts"
-      [numVisible]="4"
-      [numScroll]="4"
-      [circular]="false"
-      [responsiveOptions]="responsiveOptions"
-    >
-      <ng-template let-recommendedProduct #item>
-        <div class="border border-surface rounded-border m-2 p-4">
-          <div class="mb-4">
-            <div class="relative mx-auto justify-center align-items-center" style="cursor: pointer !important">
-              <img
-                [src]="'data:image/png;base64,' + recommendedProduct?.image"
-                [alt]="recommendedProduct.name"
-                (click)="goToProduct(recommendedProduct.id)"
-                class="w-full rounded-border"
-                style="width: 250px; height: 250px"
-              />
+    @if (recommendedProducts.length) {
+      <h5>Recommended For You</h5>
+      <p-carousel
+        [value]="recommendedProducts"
+        [numVisible]="4"
+        [numScroll]="4"
+        [circular]="false"
+        [responsiveOptions]="responsiveOptions"
+      >
+        <ng-template let-recommendedProduct #item>
+          <div class="border border-surface rounded-border m-2 p-4">
+            <div class="mb-4">
+              <div class="relative mx-auto justify-center align-items-center" style="cursor: pointer !important">
+                <img
+                  [src]="'data:image/png;base64,' + recommendedProduct?.image"
+                  [alt]="recommendedProduct.name"
+                  (click)="goToProduct(recommendedProduct.id)"
+                  class="w-full rounded-border"
+                  style="width: 250px; height: 250px"
+                />
+              </div>
+            </div>
+            <div class="mb-4 font-medium">{{ recommendedProduct.name }}</div>
+            <div class="flex justify-between items-center">
+              <div class="mt-0 font-semibold text-xl">{{ '$' + recommendedProduct.price }}</div>
+              <span>
+                <p-button
+                  icon="pi pi-shopping-cart"
+                  severity="info"
+                  styleClass="ml-2"
+                  (onClick)="addToCart(recommendedProduct)"
+                />
+              </span>
             </div>
           </div>
-          <div class="mb-4 font-medium">{{ recommendedProduct.name }}</div>
-          <div class="flex justify-between items-center">
-            <div class="mt-0 font-semibold text-xl">{{ '$' + recommendedProduct.price }}</div>
-            <span>
-              <p-button
-                icon="pi pi-shopping-cart"
-                severity="info"
-                styleClass="ml-2"
-                (onClick)="addToCart(recommendedProduct)"
-              />
-            </span>
-          </div>
-        </div>
-      </ng-template>
-    </p-carousel>
+        </ng-template>
+      </p-carousel>
+    }
   </div>
 </div>
