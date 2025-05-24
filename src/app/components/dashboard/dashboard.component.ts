@@ -20,8 +20,8 @@ export class DashboardComponent {
     },
     {
       image: 2,
-      description: 'a',
-      subDescription: 'a',
+      description: 'Male? Female? Get unisex clothes',
+      subDescription: 'Get the best unisex clothes at our store!',
     },
     {
       image: 3,
@@ -30,8 +30,8 @@ export class DashboardComponent {
     },
     {
       image: 4,
-      description: 'This is description one',
-      subDescription: '',
+      description: 'Spring jackets, Best Prices!',
+      subDescription: 'Check out our new collection!',
     },
   ].map((item, index) => {
     return { ...item, image: `../../../assets/image${index + 1}.jpg` };

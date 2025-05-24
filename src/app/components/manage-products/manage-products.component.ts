@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ManageProductsComponent implements OnInit {
   dataSource: Product[] = [];
-  displayedColumns: string[] = ['Image', 'Title', 'Price', 'Name', 'Description', 'Category', 'Actions'];
+  displayedColumns: string[] = ['Image', 'Price', 'Name', 'Description', 'Category', 'Actions'];
   isEditMode = false;
 
   constructor(
