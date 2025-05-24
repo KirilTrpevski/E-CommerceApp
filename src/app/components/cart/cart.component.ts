@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms'; // Import FormsModule here
 
 @Component({
@@ -13,7 +13,10 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule here
 export class CartComponent {
   cartItems: any[] = [];
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();
@@ -44,7 +47,8 @@ export class CartComponent {
   }
 
   onCheckoutClick(): void {
-    alert('Product paid. Enjoy');
-    this.cartService.clearCart();
+    this.router.navigate(['/checkout']);
+    // alert('Product paid. Enjoy');
+    // this.cartService.clearCart();
   }
 }

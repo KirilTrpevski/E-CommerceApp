@@ -1,22 +1,7 @@
-<!-- <div class="tf-top-bar bg_white line"> -->
-<!-- <div class="px_15 lg-px_40">
-        <div class="tf-top-bar_wrap grid-3 gap-30 align-items-center">
-            <ul class="tf-top-bar_item tf-social-icon d-flex gap-10">
-                <li><a href="#" class="box-icon w_28 round social-facebook bg_line"><i class="icon fs-12 icon-fb"></i></a></li>
-                <li><a href="#" class="box-icon w_28 round social-twiter bg_line"><i class="icon fs-10 icon-Icon-x"></i></a></li>
-                <li><a href="#" class="box-icon w_28 round social-instagram bg_line"><i class="icon fs-12 icon-instagram"></i></a></li>
-                <li><a href="#" class="box-icon w_28 round social-tiktok bg_line"><i class="icon fs-12 icon-tiktok"></i></a></li>
-                <li><a href="#" class="box-icon w_28 round social-pinterest bg_line"><i class="icon fs-12 icon-pinterest-1"></i></a></li>
-            </ul>
-          </div>
-        </div> -->
-
-<!-- </div> -->
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
+  <div class="d-flex flex-row justify-content-between align-items-center w-100 px-5">
     <!-- Company Name on the Left -->
-    <a class="navbar-brand" routerLink="/">My E-commerce Store</a>
+    <a class="navbar-brand px-0" routerLink="/">My E-commerce Store</a>
 
     <!-- Toggle button for mobile view -->
     <button
@@ -32,7 +17,7 @@
     </button>
 
     <!-- Links in the Middle -->
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="navbarNav" [ngStyle]="{ 'margin-left': getToken() ? '200px' : '-180px' }">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
           <a class="nav-link" routerLink="/dashboard">Home</a>
@@ -40,12 +25,12 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/products">Products</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="/about-us">About Us</a>
+        <li class="nav-item" *ngIf="!isAdmin() && getToken()">
+          <a class="nav-link" routerLink="/checkout">Checkout</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/contact">Contact Us</a>
-        </li> -->
+        </li>
         <li class="nav-item" *ngIf="isAdmin()">
           <a class="nav-link" routerLink="/manage-products">Manage products</a>
         </li>
@@ -55,7 +40,7 @@
       </ul>
 
       <!-- Cart Icon/Text on the Right -->
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto" *ngIf="getToken()">
         <li class="nav-item">
           <a class="nav-link" routerLink="/cart"> <i class="bi bi-cart3"></i> Cart </a>
         </li>
@@ -65,6 +50,7 @@
           <button mat-button [matMenuTriggerFor]="menu"><i class="bi bi-person-circle h3 text-muted"></i></button>
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="onLogout()">Logout</button>
+            <button mat-menu-item (click)="onMyAccount()" *ngIf="!isAdmin()">My account</button>
           </mat-menu>
         </div>
         <ng-template #login

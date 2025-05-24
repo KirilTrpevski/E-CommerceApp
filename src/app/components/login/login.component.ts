@@ -35,6 +35,11 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void {
     const formData = this.loginForm.value;
+    this.isFormValid = this.loginForm.invalid;
+
+    if (this.isFormValid) {
+      return;
+    }
     const loginUser: LoginUser = {
       userName: formData.username,
       password: formData.password,
@@ -52,7 +57,7 @@ export class LoginComponent implements OnInit {
         // Redirect to dashboard or another page upon success
       },
       (error) => {
-        console.error('Login failed', error);
+        this.areCredentialsInvalid = true;
         // Handle error (e.g., show an error message)
       },
     );

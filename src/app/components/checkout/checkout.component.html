@@ -1,73 +1,46 @@
 <div class="container my-5">
-  <h3 class="text-center mb-4">Checkout</h3>
+  <h4 class="text-center mb-4">Checkout</h4>
 
   <div class="row" *ngIf="!orderPlaced">
     <!-- Billing and Shipping Information Section -->
     <div class="col-lg-8 mb-4">
       <div class="card p-4 shadow-sm mb-4">
         <h5>Billing Information</h5>
-        <form>
+        <form [formGroup]="billingForm">
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="firstName" class="form-label">First Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="firstName"
-                [(ngModel)]="billing.firstName"
-                name="firstName"
-                required
-              />
+              <input type="text" class="form-control" id="firstName" name="firstName" formControlName="firstName" />
             </div>
             <div class="col-md-6 mb-3">
               <label for="lastName" class="form-label">Last Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="lastName"
-                [(ngModel)]="billing.lastName"
-                name="lastName"
-                required
-              />
+              <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName" />
             </div>
           </div>
 
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" [(ngModel)]="billing.email" name="email" required />
+            <input type="email" class="form-control" id="email" name="email" formControlName="email" />
           </div>
 
           <div class="mb-3">
             <label for="address" class="form-label">Address</label>
-            <input
-              type="text"
-              class="form-control"
-              id="address"
-              [(ngModel)]="billing.address"
-              name="address"
-              required
-            />
+            <input type="text" class="form-control" id="address" name="address" formControlName="address" />
           </div>
 
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="city" class="form-label">City</label>
-              <input type="text" class="form-control" id="city" [(ngModel)]="billing.city" name="city" required />
+              <input type="text" class="form-control" id="city" name="city" formControlName="city" />
             </div>
             <div class="col-md-6 mb-3">
               <label for="zip" class="form-label">Zip Code</label>
-              <input type="text" class="form-control" id="zip" [(ngModel)]="billing.zip" name="zip" required />
+              <input type="text" class="form-control" id="zip" name="zip" formControlName="zipCode" />
             </div>
           </div>
 
           <div class="form-check mb-4">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="sameAddress"
-              [(ngModel)]="sameAsBilling"
-              name="sameAddress"
-            />
+            <input class="form-check-input" type="checkbox" id="sameAddress" name="sameAddress" />
             <label class="form-check-label" for="sameAddress"> Shipping address is the same as billing </label>
           </div>
 
@@ -107,23 +80,32 @@
       </div>
 
       <!-- Payment Section -->
-      <div class="card p-4 shadow-sm">
+      <div class="card p-4 shadow-sm" [formGroup]="checkoutForm">
         <h5>Payment Information</h5>
         <div class="mb-3">
           <label for="cardNumber" class="form-label">Card Number</label>
-          <input type="text" class="form-control" id="cardNumber" name="cardNumber" required />
+          <input type="text" class="form-control" id="cardNumber" name="cardNumber" formControlName="cardNumber" />
         </div>
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="expiry" class="form-label">Expiry Date</label>
-            <input type="text" class="form-control" id="expiry" placeholder="MM/YY" name="expiry" required />
+            <input
+              type="text"
+              class="form-control"
+              id="expiry"
+              placeholder="MM/YY"
+              name="expiry"
+              formControlName="expiryDate"
+            />
           </div>
           <div class="col-md-6 mb-3">
             <label for="cvv" class="form-label">CVV</label>
-            <input type="text" class="form-control" id="cvv" name="cvv" required />
+            <input type="text" class="form-control" id="cvv" name="cvv" formControlName="cvv" />
           </div>
         </div>
-        <button class="btn btn-primary w-100 mt-3" (click)="placeOrder()">Place Order</button>
+        <button class="btn btn-primary w-100 mt-3" [disabled]="!isFormValid()" (click)="placeOrder()">
+          Place Order
+        </button>
       </div>
     </div>
   </div>

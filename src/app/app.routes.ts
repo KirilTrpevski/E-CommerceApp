@@ -17,6 +17,7 @@ import { ManageProductsComponent } from './components/manage-products/manage-pro
 import { UserDetailsResolver } from './resolvers/user-details.resolver';
 import { UpdateProductDetailsComponent } from './components/update-product-details/update-product-details.component';
 import { ProductDetailsResolver } from './resolvers/product-details.resolver';
+import { AccountManagementComponent } from './components/account-management/account-management.component';
 
 export const routes: Routes = [
   { path: 'signUp', component: SignUpComponent },
@@ -69,6 +70,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'account-management', component: AccountManagementComponent, canActivate: [AuthGuard] },
 
   { path: '**', component: PageNotFoundComponent },
 ];

@@ -1,0 +1,29 @@
+.form-wrapper {
+  margin: 0 20px;
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    .cancel-button {
+      margin-left: 5px;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    .checkbox-group {
+      display: flex;
+      margin-bottom: 1rem;
+      .checkbox-group {
+        margin-top: 0 !important;
+      }
+      label {
+        margin-right: 6px;
+      }
+    }
+  }
+}
+
+.form-control {
+  margin-bottom: 1rem;
+}
