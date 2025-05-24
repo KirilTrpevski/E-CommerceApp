@@ -47,7 +47,7 @@ export class AccountManagementComponent implements OnInit {
       id: this.id,
       email: this.userDetailsForm.get('email')?.value,
       userName: this.userDetailsForm.get('username')?.value,
-      isAdmin: this.userDetailsForm.get('isAdmin')?.value,
+      isAdmin: this.userData.isAdmin,
     };
 
     this.usersService.updateUser(updateUserPayload).subscribe((updatedUser) => {
